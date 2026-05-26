@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chof-calc"
+version = "0.1.0-alpha"
+description = "Quantifying Human Oversight for Autonomous Weapon Systems — operationalising the H equation from Mahajan (2024) QUB LLM Dissertation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Rushikesh Ravindra Mahajan", email = "advrushikeshravindramahajan@gmail.com" },
+]
+keywords = [
+  "autonomous-weapon-systems",
+  "meaningful-human-control",
+  "international-humanitarian-law",
+  "article-36",
+  "multi-criteria-decision-analysis",
+  "ai-ethics",
+  "chof",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Legal Industry",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+chof-calc = "chof_calc.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Wolfgangrush/chof-calc"
+Documentation = "https://chof-calc.readthedocs.io"
+Repository = "https://github.com/Wolfgangrush/chof-calc"
+Issues = "https://github.com/Wolfgangrush/chof-calc/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chof_calc"]
