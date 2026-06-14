@@ -60,7 +60,7 @@ Article 36 review.
 ## The story
 
 In September 2024 the author submitted an LLM dissertation at Queen's
-University Belfast's School of Law, supervised by Dr Eugene Lim, on the
+University Belfast's School of Law, on the
 question of how meaningful human control over Autonomous Weapon Systems (AWS)
 should be quantified and legally codified. The dissertation's core
 contribution is the **H equation**: a Multi-Criteria Decision Analysis-based
@@ -693,7 +693,6 @@ underlying dissertation:
   institution  = {Queen's University Belfast, School of Law},
   year         = 2024,
   month        = sep,
-  supervisor   = {Dr Eugene Lim},
 }
 ```
 
@@ -716,15 +715,13 @@ Apache License 2.0. See [`LICENSE`](LICENSE) for the full text and
 
 ## Author
 
-**Rushikesh Ravindra Mahajan** — Advocate, enrolled with the Bar Council of
-Maharashtra and Goa, Sangli, India. Practising before the High Courts of India. LLM Law and Technology, Queen's University Belfast (2024).
+**Rushikesh Ravindra Mahajan** — LLM Law and Technology, Queen's University Belfast (2024).
 
 Published as **wolfgang_rush**, an open-source brand for legal-technology
 software. See [`NOTICE.md`](NOTICE.md) for the relationship between the two
 identities.
 
-Acknowledgments to Dr Eugene Lim (QUB supervisor) for the dissertation
-guidance that produced the H equation; to Ilse Verdiesen, Filippo Santoni
+Acknowledgments to Ilse Verdiesen, Filippo Santoni
 de Sio, and Virginia Dignum (2020) for the CHOF framework that the equation
 operationalises; to Vincent Boulanin (SIPRI 2020) and Michael Horowitz &
 Paul Scharre (CNAS 2015) for the Meaningful Human Control literature.

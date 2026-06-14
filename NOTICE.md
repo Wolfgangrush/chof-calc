@@ -15,7 +15,7 @@ This software operationalises the H equation first developed in:
 > Mahajan, R. R. (2024). *What Balance Between Human Oversight and Machine
 > Autonomy Is Necessary To Uphold Ethical Standards in Warfare, and How Can
 > This Balance Be Legally Codified and Enforced.* LLM Dissertation,
-> Queen's University Belfast, School of Law. Supervisor: Dr Eugene Lim.
+> Queen's University Belfast, School of Law.
 
 The dissertation is the author's own original academic work, licensed
 non-exclusively to Queen's University Belfast per the standard QUB
@@ -28,9 +28,7 @@ expression.
 
 ## 2. Author Identity Declaration
 
-This is the author's **academic** identity. The author also practises as
-an advocate enrolled with the Bar Council of Maharashtra and Goa,
-Sangli, India, and appears principally before the High Courts of India. The publishing handle for this open-source work is
+This is the author's **academic** identity. The publishing handle for this open-source work is
 **wolfgang_rush**, an open-source brand under which the author releases
 legal-technology software. The real-identity accountability declared in
 this NOTICE attaches to the author personally and is not displaced by
