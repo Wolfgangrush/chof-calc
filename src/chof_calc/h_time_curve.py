@@ -44,9 +44,7 @@ def weighted_oversight(base_oversight: float, deployment_phase: str) -> float:
     phase with maximum base oversight yields exactly 1.0 and never overflows.
     """
     if not 0.0 <= base_oversight <= 1.0:
-        raise ValueError(
-            f"base_oversight must be in [0, 1], got {base_oversight!r}."
-        )
+        raise ValueError(f"base_oversight must be in [0, 1], got {base_oversight!r}.")
     weighted = base_oversight * phase_oversight_multiplier(deployment_phase)
     if weighted < 0.0:
         return 0.0

@@ -12,6 +12,7 @@ high settings and the swing ``abs(high_H - low_H)`` is recorded. The result is
 returned sorted by swing, descending, so the most influential elements appear
 first.
 """
+
 from __future__ import annotations
 
 

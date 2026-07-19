@@ -1,4 +1,5 @@
 """Monte-Carlo sensitivity analysis of the Human-Oversight score H."""
+
 from __future__ import annotations
 
 import random

@@ -47,9 +47,7 @@ def latency_profile(engagement_time_s: float) -> dict[str, float]:
         If ``engagement_time_s`` is not strictly positive.
     """
     if engagement_time_s <= 0:
-        raise ValueError(
-            f"engagement_time_s must be > 0, got {engagement_time_s!r}"
-        )
+        raise ValueError(f"engagement_time_s must be > 0, got {engagement_time_s!r}")
 
     # Saturation factor: 1.0 once engagement_time_s reaches 60s, linear below.
     f = min(1.0, engagement_time_s / 60.0)

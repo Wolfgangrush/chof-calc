@@ -6,9 +6,18 @@ from chof_calc.equation import HEquation
 
 def test_full_vector_keys():
     r = h_v2_for("mq9")
-    for k in ("system", "h_quantity", "severity", "transparency_class", "h_modality",
-              "dominant_modality", "h_latency_profile", "h_time_curve",
-              "h_counterfactual_cost", "defense_in_depth"):
+    for k in (
+        "system",
+        "h_quantity",
+        "severity",
+        "transparency_class",
+        "h_modality",
+        "dominant_modality",
+        "h_latency_profile",
+        "h_time_curve",
+        "h_counterfactual_cost",
+        "defense_in_depth",
+    ):
         assert k in r
 
 

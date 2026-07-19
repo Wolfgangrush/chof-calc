@@ -74,11 +74,14 @@ def main():
     # ------------------------------------------------------------------
     for fixture in fixtures:
         label = fixture_label(fixture)
-        for (t, phase, exposure, n) in itertools.product(
-                ENGAGEMENT_TIMES, DEPLOYMENT_PHASES, EXPOSURES, N_LAYERS):
+        for t, phase, exposure, n in itertools.product(
+            ENGAGEMENT_TIMES, DEPLOYMENT_PHASES, EXPOSURES, N_LAYERS
+        ):
             total_combinations += 1
-            combo = ("fixture=%s engagement_time_s=%s deployment_phase=%s "
-                     "exposure=%s n_layers=%s" % (label, t, phase, exposure, n))
+            combo = (
+                "fixture=%s engagement_time_s=%s deployment_phase=%s "
+                "exposure=%s n_layers=%s" % (label, t, phase, exposure, n)
+            )
 
             try:
                 result = compute_h_v2(
@@ -89,13 +92,19 @@ def main():
                     n_layers=n,
                 )
             except Exception as exc:  # defensive: never abort the sweep
-                record("COMPUTE", combo,
-                       "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc))
+                record(
+                    "COMPUTE",
+                    combo,
+                    "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc),
+                )
                 continue
 
             if not isinstance(result, dict):
-                record("COMPUTE", combo,
-                       "compute_h_v2 returned non-dict %s" % type(result).__name__)
+                record(
+                    "COMPUTE",
+                    combo,
+                    "compute_h_v2 returned non-dict %s" % type(result).__name__,
+                )
                 continue
 
             # INV1: 0.0 <= h_quantity <= 100.0
@@ -164,8 +173,11 @@ def main():
             if isinstance(did, list) and did_len == n and cov_ok:
                 tally["INV5"]["pass"] += 1
             else:
-                record("INV5", combo,
-                       "defense_in_depth invalid (len=%r expected=%r)" % (did_len, n))
+                record(
+                    "INV5",
+                    combo,
+                    "defense_in_depth invalid (len=%r expected=%r)" % (did_len, n),
+                )
 
             # INV6: to_jsonld -> json.dumps -> json.loads round-trip
             rt_error = None
@@ -187,15 +199,17 @@ def main():
                         msgs.append("missing key %r" % (k,))
                         break
                     if rt[k] != v:
-                        msgs.append("value mismatch for %r (rt=%r != orig=%r)"
-                                    % (k, rt[k], v))
+                        msgs.append(
+                            "value mismatch for %r (rt=%r != orig=%r)" % (k, rt[k], v)
+                        )
                         break
                 if not msgs:
                     orig_hq = result.get("h_quantity")
                     rt_hq = rt.get("h_quantity")
                     if rt_hq != orig_hq:
-                        msgs.append("h_quantity changed (rt=%r != orig=%r)"
-                                    % (rt_hq, orig_hq))
+                        msgs.append(
+                            "h_quantity changed (rt=%r != orig=%r)" % (rt_hq, orig_hq)
+                        )
                 if msgs:
                     record("INV6", combo, "; ".join(msgs))
                 else:
@@ -209,27 +223,38 @@ def main():
         points = []
         sweep_failed = False
         for exposure in EXPOSURES:
-            combo = ("fixture=%s INV7 monotone-exposure "
-                     "(engagement_time_s=30.0 deployment_phase=active n_layers=3 "
-                     "exposure=%s)" % (label, exposure))
+            combo = (
+                "fixture=%s INV7 monotone-exposure "
+                "(engagement_time_s=30.0 deployment_phase=active n_layers=3 "
+                "exposure=%s)" % (label, exposure)
+            )
             try:
-                r = compute_h_v2(fixture, engagement_time_s=30.0,
-                                 deployment_phase="active",
-                                 exposure=exposure, n_layers=3)
+                r = compute_h_v2(
+                    fixture,
+                    engagement_time_s=30.0,
+                    deployment_phase="active",
+                    exposure=exposure,
+                    n_layers=3,
+                )
                 points.append((exposure, r["h_counterfactual_cost"]))
             except Exception as exc:
-                record("INV7", combo,
-                       "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc))
+                record(
+                    "INV7",
+                    combo,
+                    "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc),
+                )
                 sweep_failed = True
         if sweep_failed:
             continue
         monotone = True
         for (e0, c0), (e1, c1) in zip(points, points[1:]):
             if c1 < c0 - TOL:
-                record("INV7",
-                       "fixture=%s INV7 monotone-exposure sweep" % label,
-                       "h_counterfactual_cost decreased: exposure %s->%s "
-                       "cost %r->%r" % (e0, e1, c0, c1))
+                record(
+                    "INV7",
+                    "fixture=%s INV7 monotone-exposure sweep" % label,
+                    "h_counterfactual_cost decreased: exposure %s->%s "
+                    "cost %r->%r" % (e0, e1, c0, c1),
+                )
                 monotone = False
         if monotone:
             tally["INV7"]["pass"] += 1
@@ -242,18 +267,26 @@ def main():
         combo = "fixture=%s INV8 time-curve" % label
         try:
             active = compute_h_v2(fixture, deployment_phase="active")["h_time_curve"]
-            post = compute_h_v2(fixture, deployment_phase="post_deployment")["h_time_curve"]
-            pre = compute_h_v2(fixture, deployment_phase="pre_deployment")["h_time_curve"]
+            post = compute_h_v2(fixture, deployment_phase="post_deployment")[
+                "h_time_curve"
+            ]
+            pre = compute_h_v2(fixture, deployment_phase="pre_deployment")[
+                "h_time_curve"
+            ]
         except Exception as exc:
-            record("INV8", combo,
-                   "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc))
+            record(
+                "INV8", combo, "compute_h_v2 raised %s: %s" % (type(exc).__name__, exc)
+            )
             continue
         if (active + TOL >= post) and (active + TOL >= pre):
             tally["INV8"]["pass"] += 1
         else:
-            record("INV8", combo,
-                   "active h_time_curve=%r not >= both post=%r and pre=%r"
-                   % (active, post, pre))
+            record(
+                "INV8",
+                combo,
+                "active h_time_curve=%r not >= both post=%r and pre=%r"
+                % (active, post, pre),
+            )
 
     # ------------------------------------------------------------------
     # Report.

@@ -17,7 +17,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum
 
-from chof_calc.elements import Element, Elements, RiskBand
+from chof_calc.elements import Element, Elements
 from chof_calc.transparency import TransparencyClass
 from chof_calc.weights import Weights
 
@@ -67,7 +67,9 @@ class HResult:
         return {
             "h_quantity": round(self.h_quantity, 4),
             "severity": self.severity.value,
-            "elements": {el.value: score for el, score in self.elements.as_dict().items()},
+            "elements": {
+                el.value: score for el, score in self.elements.as_dict().items()
+            },
             "weights": {el.value: w for el, w in self.weights.as_dict().items()},
             "transparency_class": self.transparency.value,
             "weighted_sum": round(self.weighted_sum, 4),
@@ -120,12 +122,8 @@ class HEquation:
         severity = OversightSeverity.from_h(h_quantity)
 
         # Build the live-math computation trace (for CLI + web app display).
-        terms = " + ".join(
-            f"({wt_dict[el]:g} * {elem_dict[el]:g})" for el in Element
-        )
-        terms_values = " + ".join(
-            f"{contributions[el]:.2f}" for el in Element
-        )
+        terms = " + ".join(f"({wt_dict[el]:g} * {elem_dict[el]:g})" for el in Element)
+        terms_values = " + ".join(f"{contributions[el]:.2f}" for el in Element)
         computation_trace = [
             f"H = 100 - [ {terms} ] / {weight_total:g}",
             f"H = 100 - [ {terms_values} ] / {weight_total:g}",

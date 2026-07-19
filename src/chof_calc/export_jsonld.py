@@ -1,4 +1,5 @@
 """Serialise a CHOF H_v2 assessment to JSON-LD."""
+
 from __future__ import annotations
 
 import json

@@ -21,7 +21,11 @@ from chof_calc.transparency import TransparencyClass
 def test_all_five_fixtures_registered():
     assert len(REGISTRY) == 5
     assert set(REGISTRY.keys()) == {
-        "mq9", "iron_dome", "sgr_a1", "kargu_2", "phalanx",
+        "mq9",
+        "iron_dome",
+        "sgr_a1",
+        "kargu_2",
+        "phalanx",
     }
 
 
@@ -87,9 +91,14 @@ def test_kargu_severity_is_high():
     """Kargu-2 should land in HIGH or CRITICAL severity given its
     autonomous-engagement profile."""
     from chof_calc.equation import OversightSeverity
+
     result = HEquation.compute(
         elements=KARGU_2.elements,
         weights=KARGU_2.weights,
         transparency=KARGU_2.transparency,
     )
-    assert result.severity in (OversightSeverity.HIGH, OversightSeverity.MEDIUM, OversightSeverity.CRITICAL)
+    assert result.severity in (
+        OversightSeverity.HIGH,
+        OversightSeverity.MEDIUM,
+        OversightSeverity.CRITICAL,
+    )

@@ -91,7 +91,7 @@ def cmd_assess(args: argparse.Namespace) -> int:
     # Human-readable assessment report.
     print(_banner())
     print()
-    print(f"SYSTEM ASSESSED")
+    print("SYSTEM ASSESSED")
     print(f"  Name:          {fixture.name}")
     print(f"  Type:          {fixture.system_type}")
     print(f"  Manufacturer:  {fixture.manufacturer}")
@@ -109,13 +109,16 @@ def cmd_assess(args: argparse.Namespace) -> int:
     elem_dict = fixture.elements.as_dict()
     wt_dict = fixture.weights.as_dict()
     from chof_calc.elements import ELEMENT_LABELS, Element
+
     for el in Element:
         score = elem_dict[el]
         wt = wt_dict[el]
         contrib = result.element_contributions[el]
         label = f"{el.value} -- {ELEMENT_LABELS[el]}"
         print(f"  {label:<32}{score:<8.2f}{wt:<10.4f}{contrib:.4f}")
-    print(f"  {'TOTAL':<32}{'':<8}{result.weight_total:<10.4f}{result.weighted_sum:.4f}")
+    print(
+        f"  {'TOTAL':<32}{'':<8}{result.weight_total:<10.4f}{result.weighted_sum:.4f}"
+    )
     print()
 
     print("LIVE COMPUTATION (the equation walked through):")
@@ -131,9 +134,13 @@ def cmd_assess(args: argparse.Namespace) -> int:
     print("H_MODALITY (transparency-class aware oversight prescription)")
     print(f"  Class:                 {fixture.transparency.value}")
     print(f"  CHOF blocks available: {fixture.transparency.cohf_blocks}")
-    print(f"  In-flight supervision: ", end="")
-    print("feasible" if fixture.transparency.supports_in_flight_supervision else "INFEASIBLE")
-    print(f"  Recommended modality:")
+    print("  In-flight supervision: ", end="")
+    print(
+        "feasible"
+        if fixture.transparency.supports_in_flight_supervision
+        else "INFEASIBLE"
+    )
+    print("  Recommended modality:")
     # word-wrap the modality string at ~70 chars
     modality = fixture.transparency.recommended_modality
     words = modality.split()

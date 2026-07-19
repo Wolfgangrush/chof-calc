@@ -18,8 +18,6 @@ This test verifies:
   (c) the underlying weighted_sum (29.65) matches the dissertation exactly
 """
 
-import pytest
-
 from chof_calc.equation import HEquation
 from chof_calc.systems import MQ9_REAPER
 
@@ -74,7 +72,10 @@ def test_mq9_correction_note_fires_when_dissertation_value_passed():
     )
     assert result.correction_note is not None
     assert "75.35" in result.correction_note
-    assert "70.35" in result.correction_note or "{:.2f}".format(result.h_quantity) in result.correction_note
+    assert (
+        "70.35" in result.correction_note
+        or "{:.2f}".format(result.h_quantity) in result.correction_note
+    )
 
 
 def test_mq9_correction_note_silent_without_dissertation_value():
@@ -89,13 +90,13 @@ def test_mq9_correction_note_silent_without_dissertation_value():
 
 def test_mq9_per_element_contributions_match_dissertation():
     """Each of the seven per-element contributions on p.42:
-      0.25 * 35 = 8.75
-      0.15 * 30 = 4.50
-      0.15 * 28 = 4.20
-      0.10 * 20 = 2.00
-      0.10 * 25 = 2.50
-      0.15 * 30 = 4.50
-      0.10 * 32 = 3.20
+    0.25 * 35 = 8.75
+    0.15 * 30 = 4.50
+    0.15 * 28 = 4.20
+    0.10 * 20 = 2.00
+    0.10 * 25 = 2.50
+    0.15 * 30 = 4.50
+    0.10 * 32 = 3.20
     """
     result = HEquation.compute(
         elements=MQ9_REAPER.elements,
@@ -103,6 +104,7 @@ def test_mq9_per_element_contributions_match_dissertation():
     )
     contribs = result.element_contributions
     from chof_calc.elements import Element
+
     expected = {
         Element.RR: 8.75,
         Element.CC: 4.50,

@@ -2,7 +2,12 @@ import pytest
 from chof_calc.backtest_incidents import INCIDENTS, backtest_h, run_all
 
 ELEMS = {"RR", "CC", "EE", "TT", "SS", "AA", "II"}
-NAMES = {"iran_air_655_1988", "kargu_2_libya_2020", "therac_25_1980s", "boeing_737_max_2018_2019"}
+NAMES = {
+    "iran_air_655_1988",
+    "kargu_2_libya_2020",
+    "therac_25_1980s",
+    "boeing_737_max_2018_2019",
+}
 
 
 def test_four_incidents():

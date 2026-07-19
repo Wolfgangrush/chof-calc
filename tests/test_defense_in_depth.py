@@ -27,7 +27,9 @@ def test_failure_modes_come_from_registry():
         assert layer["failure_mode"] in FAILURE_MODES
 
 
-@pytest.mark.parametrize("bad", [(150, 3), (-1, 3), (50, 0), (50, len(FAILURE_MODES) + 1)])
+@pytest.mark.parametrize(
+    "bad", [(150, 3), (-1, 3), (50, 0), (50, len(FAILURE_MODES) + 1)]
+)
 def test_invalid_raises(bad):
     with pytest.raises(ValueError):
         plan_layers(*bad)

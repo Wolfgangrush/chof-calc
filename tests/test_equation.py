@@ -4,7 +4,7 @@ Tests for the pure-function H equation and its validators.
 
 import pytest
 
-from chof_calc.elements import Element, Elements, RiskBand
+from chof_calc.elements import Elements, RiskBand
 from chof_calc.equation import HEquation, OversightSeverity
 from chof_calc.transparency import TransparencyClass
 from chof_calc.weights import Weights
@@ -44,8 +44,13 @@ def test_weights_must_sum_to_one():
     """Weights summing to anything other than 1.0 must raise."""
     with pytest.raises(ValueError, match="must sum to 1.0"):
         Weights(
-            W_RR=0.5, W_CC=0.5, W_EE=0.5, W_TT=0.5,
-            W_SS=0.5, W_AA=0.5, W_II=0.5,
+            W_RR=0.5,
+            W_CC=0.5,
+            W_EE=0.5,
+            W_TT=0.5,
+            W_SS=0.5,
+            W_AA=0.5,
+            W_II=0.5,
         )
 
 
@@ -53,8 +58,13 @@ def test_weights_must_be_in_range():
     """Weights outside [0, 1] must raise."""
     with pytest.raises(ValueError, match="outside the valid range"):
         Weights(
-            W_RR=-0.1, W_CC=0.18, W_EE=0.18, W_TT=0.18,
-            W_SS=0.18, W_AA=0.18, W_II=0.20,
+            W_RR=-0.1,
+            W_CC=0.18,
+            W_EE=0.18,
+            W_TT=0.18,
+            W_SS=0.18,
+            W_AA=0.18,
+            W_II=0.20,
         )
 
 
@@ -101,6 +111,7 @@ def test_computation_trace_is_human_readable():
 def test_result_as_dict_round_trips():
     """HResult.as_dict() should produce a JSON-serialisable structure."""
     import json
+
     elements = Elements(RR=10, CC=10, EE=10, TT=10, SS=10, AA=10, II=10)
     weights = _equal_weights()
     result = HEquation.compute(elements, weights, TransparencyClass.BLACK_BOX)

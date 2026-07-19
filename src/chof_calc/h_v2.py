@@ -15,6 +15,7 @@ under a particular deployment context. It wraps:
 The two public entry points are :func:`compute_h_v2` (operate on a fixture
 directly) and :func:`h_v2_for` (look up a fixture by system id).
 """
+
 from __future__ import annotations
 
 from chof_calc.equation import HEquation

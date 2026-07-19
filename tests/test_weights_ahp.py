@@ -1,5 +1,9 @@
 import pytest
-from chof_calc.weights_ahp import ahp_weights as w, consistency_ratio as cr, is_consistent as ic
+from chof_calc.weights_ahp import (
+    ahp_weights as w,
+    consistency_ratio as cr,
+    is_consistent as ic,
+)
 
 
 def test_all_ones_equal_weights():
@@ -26,7 +30,9 @@ def test_inconsistent_matrix_flagged():
     assert cr(B) > 0
 
 
-@pytest.mark.parametrize("bad", [[[1, 2], [3, 4], [5, 6]], [[1, -2], [-0.5, 1]], [[1, 0], [0, 1]]])
+@pytest.mark.parametrize(
+    "bad", [[[1, 2], [3, 4], [5, 6]], [[1, -2], [-0.5, 1]], [[1, 0], [0, 1]]]
+)
 def test_invalid_raises(bad):
     with pytest.raises(ValueError):
         w(bad)

@@ -1,5 +1,8 @@
 import pytest
-from chof_calc.transparency_classifier import classify_transparency as c, transparency_score as ts
+from chof_calc.transparency_classifier import (
+    classify_transparency as c,
+    transparency_score as ts,
+)
 
 
 def test_corners():

@@ -1,5 +1,8 @@
 import pytest
-from chof_calc.h_counterfactual import counterfactual_cost as cc, marginal_cost_per_point as mc
+from chof_calc.h_counterfactual import (
+    counterfactual_cost as cc,
+    marginal_cost_per_point as mc,
+)
 
 
 def test_full_oversight_zero_cost():

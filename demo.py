@@ -5,6 +5,7 @@ Framework) H_v2 assessment on the bundled system fixtures. The results are
 decision-support only: H_v2 makes the cost of less-safe options visible, it
 does not by itself make autonomous weapon systems safe.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -45,10 +46,7 @@ def _print_fixture_block(result: dict[str, Any]) -> None:
         "h_counterfactual_cost: "
         f"{_format_counterfactual_cost(result['h_counterfactual_cost'])}"
     )
-    print(
-        "defense_in_depth:      "
-        f"{len(result['defense_in_depth'])} layer(s)"
-    )
+    print(f"defense_in_depth:      {len(result['defense_in_depth'])} layer(s)")
     print("-" * 72)
 
 

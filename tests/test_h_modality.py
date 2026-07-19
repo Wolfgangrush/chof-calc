@@ -2,9 +2,21 @@ import pytest
 from chof_calc.h_modality import oversight_modality, dominant_modality
 
 EXPECT = {
-    "black_box": {"ex_ante_constraint": 0.10, "in_flight_supervision": 0.35, "ex_post_audit": 0.55},
-    "glass_box": {"ex_ante_constraint": 0.34, "in_flight_supervision": 0.33, "ex_post_audit": 0.33},
-    "white_box": {"ex_ante_constraint": 0.55, "in_flight_supervision": 0.30, "ex_post_audit": 0.15},
+    "black_box": {
+        "ex_ante_constraint": 0.10,
+        "in_flight_supervision": 0.35,
+        "ex_post_audit": 0.55,
+    },
+    "glass_box": {
+        "ex_ante_constraint": 0.34,
+        "in_flight_supervision": 0.33,
+        "ex_post_audit": 0.33,
+    },
+    "white_box": {
+        "ex_ante_constraint": 0.55,
+        "in_flight_supervision": 0.30,
+        "ex_post_audit": 0.15,
+    },
 }
 
 

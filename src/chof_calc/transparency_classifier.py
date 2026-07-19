@@ -49,17 +49,11 @@ def transparency_score(
             ``[0, 1]``.
     """
     if not (0.0 <= inspectability <= 1.0):
-        raise ValueError(
-            f"inspectability must be in [0, 1], got {inspectability!r}"
-        )
+        raise ValueError(f"inspectability must be in [0, 1], got {inspectability!r}")
     if not (0.0 <= determinism <= 1.0):
-        raise ValueError(
-            f"determinism must be in [0, 1], got {determinism!r}"
-        )
+        raise ValueError(f"determinism must be in [0, 1], got {determinism!r}")
     if not (0.0 <= documentation <= 1.0):
-        raise ValueError(
-            f"documentation must be in [0, 1], got {documentation!r}"
-        )
+        raise ValueError(f"documentation must be in [0, 1], got {documentation!r}")
     return (inspectability + determinism + documentation) / 3.0
 
 

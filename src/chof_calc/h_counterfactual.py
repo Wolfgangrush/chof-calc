@@ -26,25 +26,19 @@ __all__ = ["counterfactual_cost", "marginal_cost_per_point"]
 def _validate_exposure(exposure: float) -> None:
     """Reject ``exposure`` values outside the closed unit interval."""
     if not (0.0 <= exposure <= 1.0):
-        raise ValueError(
-            f"exposure must be in [0, 1]; got {exposure!r}"
-        )
+        raise ValueError(f"exposure must be in [0, 1]; got {exposure!r}")
 
 
 def _validate_max_casualties(max_casualties: float) -> None:
     """Reject negative ``max_casualties`` upper bounds."""
     if max_casualties < 0.0:
-        raise ValueError(
-            f"max_casualties must be >= 0; got {max_casualties!r}"
-        )
+        raise ValueError(f"max_casualties must be >= 0; got {max_casualties!r}")
 
 
 def _validate_h_quantity(h_quantity: float) -> None:
     """Reject oversight percentages outside the closed 0..100 range."""
     if not (0.0 <= h_quantity <= 100.0):
-        raise ValueError(
-            f"h_quantity must be in [0, 100]; got {h_quantity!r}"
-        )
+        raise ValueError(f"h_quantity must be in [0, 100]; got {h_quantity!r}")
 
 
 def counterfactual_cost(

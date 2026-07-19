@@ -54,12 +54,9 @@ def plan_layers(h_required: float, n_layers: int = 3) -> List[Dict]:
             f"h_required must be a number in [0, 100], got {type(h_required).__name__}"
         )
     if isinstance(h_required, bool) or not (
-        isinstance(h_required, (int, float))
-        and 0.0 <= float(h_required) <= 100.0
+        isinstance(h_required, (int, float)) and 0.0 <= float(h_required) <= 100.0
     ):
-        raise ValueError(
-            f"h_required must be in [0, 100], got {h_required!r}"
-        )
+        raise ValueError(f"h_required must be in [0, 100], got {h_required!r}")
 
     if isinstance(n_layers, bool) or not isinstance(n_layers, int):
         raise ValueError(
