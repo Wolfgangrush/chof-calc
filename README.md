@@ -13,23 +13,6 @@ Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
 
 </div>
 
-
-<div align="center">
-
-<img src="docs/banner.png" width="820"/>
-
-**Quantify the human oversight Autonomous Weapon Systems require — via the H equation.**
-
-Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![CHOF Toolkit](https://img.shields.io/badge/CHOF_Toolkit-Tier_1-1f6feb)](#)
-[![Companion](https://img.shields.io/badge/companion-chof--kernel-1f6feb)](https://github.com/Wolfgangrush/chof-kernel)
-[![Source](https://img.shields.io/badge/source-Mahajan_2024_(QUB_LLM)-555)](#)
-
-</div>
-
-
 # chof-calc
 
 > **Quantifying Human Oversight for Autonomous Weapon Systems.**
