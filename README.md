@@ -6,7 +6,7 @@
 
 Visit the live site: [wolfgangrush.github.io](https://wolfgangrush.github.io)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![CHOF Toolkit](https://img.shields.io/badge/CHOF_Toolkit-Tier_1-1f6feb)](#)
 [![Companion](https://img.shields.io/badge/companion-chof--kernel-1f6feb)](https://github.com/Wolfgangrush/chof-kernel)
 [![Source](https://img.shields.io/badge/source-Mahajan_2024_(QUB_LLM)-555)](#)
